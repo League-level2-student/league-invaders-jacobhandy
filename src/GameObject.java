@@ -11,10 +11,14 @@ public class GameObject {
 		width = Width;
 		height = Height;
 	}
-	void update() {
+	static void update() {
 		
 	}
 	void draw(Graphics visuals) {
 		 visuals.fillRect(10, 10, 100, 100);
+	}
+	public static void repaint() {
+		// TODO Auto-generated method stub
+		
 	}
 }
