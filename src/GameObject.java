@@ -1,8 +1,8 @@
 import java.awt.Graphics;
 
 public class GameObject {
-	int x;
-	int y;
+	public int x;
+	public static int y;
 	int width;
 	int height;
 	public GameObject(int X, int Y, int Width, int Height) {
@@ -12,12 +12,13 @@ public class GameObject {
 		height = Height;
 	}
 	static void update() {
-		
+		y = y -100;
+		System.out.println("oihfjaopghvcdfahjtoirewhjfjb o;ailntm");
 	}
 	void draw(Graphics visuals) {
-		 visuals.fillRect(10, 10, 100, 100);
+		 visuals.fillRect(x, y, 100, 100);
 	}
-	public static void repaint() {
+	public static void repaint() { 
 		// TODO Auto-generated method stub
 		
 	}
