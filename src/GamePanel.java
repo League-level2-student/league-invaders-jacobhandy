@@ -1,4 +1,6 @@
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,13 +14,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
     GameObject test;
     
     final int MENU_STATE = 1;
-
+    Font titleFont;
     final int GAME_STATE = 2;
     final int END_STATE = 3;
     int currentState = 1;
 	public GamePanel () {
 		t = new Timer(1000 / 60, this);
-		
+		titleFont = new Font("Comic Sans", Font.PLAIN, 48);
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -64,16 +66,16 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		if(keyCode == KeyEvent.VK_ENTER) {
 			
 			
-			if(currentState <= END_STATE) {
+			if(currentState < END_STATE) {
 					currentState++;
-			System.out.println(currentState);
+					System.out.println(currentState);
 				
-	}	
-			else if(currentState > END_STATE){
+			}	
+			else if(currentState >= END_STATE){
 				System.out.println(currentState);
 	            currentState = MENU_STATE;
 
-	    }
+			}
 		}
 	}
 	@Override
@@ -87,7 +89,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		//System.out.println("Luke! Stay after class!");
 	}
     public void updateMenuState() {
-    		drawGameState(getGraphics());
+    		drawMenuState(getGraphics());
     }
     public void updateGameState() {
     		drawGameState(getGraphics());
@@ -98,17 +100,25 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
     public void drawMenuState(Graphics g) {
     	g.setColor(Color.BLUE);
     	//System.out.println("welcome");
-    	g.fillRect(0, 0, LeagueInvaders.frameWidth, LeagueInvaders.frameHeight);    
+    	g.fillRect(0, 0, LeagueInvaders.frameWidth, LeagueInvaders.frameHeight);   
+    	g.setFont(titleFont);
+    	g.setColor(Color.WHITE);
+    	g.drawString("League Invaders!", 60, 200);
+    	g.drawString("Press Enter", 65, 500);
     }
 public void drawGameState(Graphics g) {
 	g.setColor(Color.BLACK);
 	//System.out.println("Lick");
-	g.fillRect(0, 0, LeagueInvaders.frameWidth, LeagueInvaders.frameHeight);    
+	g.fillRect(0, 0, LeagueInvaders.frameWidth, LeagueInvaders.frameHeight);
+
     }
 public void drawEndState(Graphics g) {
 	g.setColor(Color.RED);
 	//System.out.println("dick");
-	g.fillRect(0, 0, LeagueInvaders.frameWidth, LeagueInvaders.frameHeight);    
+	g.fillRect(0, 0, LeagueInvaders.frameWidth, LeagueInvaders.frameHeight);  
+	g.setColor(Color.BLACK);
+	
+	g.drawString("Game Over ;(" , 60, 200);
 }
 }
 
