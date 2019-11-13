@@ -18,6 +18,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
     final int GAME_STATE = 2;
     final int END_STATE = 3;
     int currentState = 1;
+    Player player = new Player(250,700,50,50);
 	public GamePanel () {
 		t = new Timer(1000 / 60, this);
 		titleFont = new Font("Comic Sans", Font.PLAIN, 48);
@@ -77,6 +78,17 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 
 			}
 		}
+	
+	//movement for player
+		//move left
+		if(keyCode == KeyEvent.VK_LEFT) {
+			//works
+			player.moveLeft();
+		}
+		//move right
+		if(keyCode == KeyEvent.VK_RIGHT) {
+			player.moveRight();
+		}
 	}
 	@Override
 	public void keyReleased(KeyEvent e) {
@@ -93,6 +105,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
     }
     public void updateGameState() {
     		drawGameState(getGraphics());
+    		player.update();
     }
     public void updateEndState() {
     		drawEndState(getGraphics());
@@ -110,15 +123,17 @@ public void drawGameState(Graphics g) {
 	g.setColor(Color.BLACK);
 	//System.out.println("Lick");
 	g.fillRect(0, 0, LeagueInvaders.frameWidth, LeagueInvaders.frameHeight);
-
+	player.draw(getGraphics());
     }
+public int enemiesKilled = 0;
 public void drawEndState(Graphics g) {
 	g.setColor(Color.RED);
 	//System.out.println("dick");
 	g.fillRect(0, 0, LeagueInvaders.frameWidth, LeagueInvaders.frameHeight);  
+	g.setFont(titleFont);
 	g.setColor(Color.BLACK);
-	
-	g.drawString("Game Over ;(" , 60, 200);
+	g.drawString("Game Over ;(", 0, 200);
+	g.drawString("You killed " + enemiesKilled + " enemies", 0, 400);
 }
 }
 
