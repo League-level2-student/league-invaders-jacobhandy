@@ -79,6 +79,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	            currentState = MENU_STATE;
 
 			}
+			 
 		}
 	
 	//movement for player
@@ -89,6 +90,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		//move right
 		if(keyCode == KeyEvent.VK_RIGHT) {
 			player.moveRight();
+		}
+		if(keyCode == KeyEvent.VK_SPACE) {
+			Manager.addProjectile(new Projectile(X, Y, 10, 10));
 		}
 	}
 	@Override
