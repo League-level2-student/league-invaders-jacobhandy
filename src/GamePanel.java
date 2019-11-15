@@ -19,6 +19,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
     final int END_STATE = 3;
     int currentState = 1;
     Player player = new Player(250,700,50,50);
+    ObjectManager Manager = new ObjectManager(player);
 	public GamePanel () {
 		t = new Timer(1000 / 60, this);
 		titleFont = new Font("Comic Sans", Font.PLAIN, 48);
@@ -39,6 +40,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
               updateEndState();
 
       }
+		  repaint();
 	}
 	void startGame() {
 		t.start();
@@ -66,13 +68,13 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		int keyCode = e.getKeyCode();
 		if(keyCode == KeyEvent.VK_ENTER) {
 			
+			System.out.println("dbtgfrgdtg");
 			
-			if(currentState < END_STATE) {
 					currentState++;
 					System.out.println(currentState);
 				
-			}	
-			else if(currentState >= END_STATE){
+				
+			 if(currentState > END_STATE){
 				System.out.println(currentState);
 	            currentState = MENU_STATE;
 
@@ -82,7 +84,6 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 	//movement for player
 		//move left
 		if(keyCode == KeyEvent.VK_LEFT) {
-			//works
 			player.moveLeft();
 		}
 		//move right
@@ -101,18 +102,17 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		//System.out.println("Luke! Stay after class!");
 	}
     public void updateMenuState() {
-    		drawMenuState(getGraphics());
+    		
     }
     public void updateGameState() {
-    		drawGameState(getGraphics());
-    		player.update();
+    		
+    		Manager.update();
     }
     public void updateEndState() {
-    		drawEndState(getGraphics());
+    		
     }
     public void drawMenuState(Graphics g) {
     	g.setColor(Color.BLUE);
-    	//System.out.println("welcome");
     	g.fillRect(0, 0, LeagueInvaders.frameWidth, LeagueInvaders.frameHeight);   
     	g.setFont(titleFont);
     	g.setColor(Color.WHITE);
@@ -123,12 +123,11 @@ public void drawGameState(Graphics g) {
 	g.setColor(Color.BLACK);
 	//System.out.println("Lick");
 	g.fillRect(0, 0, LeagueInvaders.frameWidth, LeagueInvaders.frameHeight);
-	player.draw(getGraphics());
+	Manager.draw(g);
     }
 public int enemiesKilled = 0;
 public void drawEndState(Graphics g) {
 	g.setColor(Color.RED);
-	//System.out.println("dick");
 	g.fillRect(0, 0, LeagueInvaders.frameWidth, LeagueInvaders.frameHeight);  
 	g.setFont(titleFont);
 	g.setColor(Color.BLACK);
