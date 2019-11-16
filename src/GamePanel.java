@@ -92,7 +92,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 			player.moveRight();
 		}
 		if(keyCode == KeyEvent.VK_SPACE) {
-			Manager.addProjectile(new Projectile(X, Y, 10, 10));
+			Manager.addProjectile(new Projectile(player.x + 20, player.y, 10, 10));
 		}
 	}
 	@Override
@@ -111,6 +111,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
     public void updateGameState() {
     		
     		Manager.update();
+    		Manager.manageEnemies();
     }
     public void updateEndState() {
     		

@@ -18,5 +18,6 @@ int speed;
 	public void draw(Graphics g) {
 		g.setColor(Color.RED);
 		g.fillRect(x, y, width, height);
+		y-=speed;
 	}
 }
