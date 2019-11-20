@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class ObjectManager {
 	Player RocketShip;
-	//Alien Xenomorph;
+
 	 
 	
 	public ObjectManager(Player p) {
