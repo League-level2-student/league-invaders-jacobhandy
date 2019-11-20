@@ -10,7 +10,11 @@ import java.awt.event.KeyListener;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 public class GamePanel extends JPanel implements ActionListener, KeyListener{
-    Timer t;
+    /**
+	 * 
+	 */
+	
+	Timer t;
     GameObject test;
     
     final int MENU_STATE = 1;

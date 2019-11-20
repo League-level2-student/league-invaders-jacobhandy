@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class ObjectManager {
 	Player RocketShip;
-	Alien Xenomorph;
+	//Alien Xenomorph;
 	 
 	
 	public ObjectManager(Player p) {
@@ -15,11 +15,11 @@ public class ObjectManager {
 	ArrayList<Alien> enemies = new ArrayList<Alien>();
 	public void update() {
 		RocketShip.update();   
-		Xenomorph.update();
+		//Xenomorph.update();
 	}
 	public void draw(Graphics g) {
 		RocketShip.draw(g);
-		Xenomorph.draw(g);
+		//Xenomorph.draw(g);
 		for (Projectile p : bullets) {
 			p.draw(g);
 		}
@@ -37,8 +37,10 @@ public void manageEnemies(){
 		if(System.currentTimeMillis() - enemyTimer >= enemySpawnTime){
                 addAlien(new Alien(new Random().nextInt(LeagueInvaders.frameWidth), 0, 50, 50));
 
-enemyTimer = System.currentTimeMillis();
+                enemyTimer = System.currentTimeMillis();
         }
+	
+		
 }
 	public void purgeObjects() {
 		enemies.remove(0);
