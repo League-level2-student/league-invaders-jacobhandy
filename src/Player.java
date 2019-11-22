@@ -11,7 +11,7 @@ public int speed;
 	}
 	
 	public void update() {
-	
+		super.update();
 	}
 	
 
