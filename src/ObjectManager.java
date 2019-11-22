@@ -4,7 +4,11 @@ import java.util.Random;
 
 public class ObjectManager {
 	Player RocketShip;
-
+	int Score = 0;
+	int getScore() {
+		return(Score);
+	}
+	
 	public ObjectManager(Player p) {
 
 		RocketShip = p;
@@ -83,6 +87,7 @@ public class ObjectManager {
 					System.out.println("oof");
 					a.isAlive = false;
 					p.isAlive = false;
+					Score++;
 				}
 			}
 			if (RocketShip.collisionBox.intersects(a.collisionBox)) {

@@ -110,7 +110,7 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener{
 		//System.out.println("Luke! Stay after class!");
 	}
     public void updateMenuState() {
-    		player.isAlive = true;
+    		player.isAlive = true;                    
     }
     public void updateGameState() {
     		
